@@ -1,11 +1,10 @@
-import React from "react";
-import "./styles.css";
+import * as React from 'react';
+import {ThemeProvider} from 'styled-components';
+import {Player} from './Player';
+import {theme} from './design-system/theme';
 
-export default function App() {
-  return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
-  );
-}
+export const App = () => (
+  <ThemeProvider theme={theme}>
+    <Player />
+  </ThemeProvider>
+);
