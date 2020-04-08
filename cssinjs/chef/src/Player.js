@@ -1,13 +1,17 @@
 import * as React from 'react';
 import {CircularProgress} from './design-system/CircularProgress';
-import {createUseStyles} from 'react-jss';
+import {createUseStyles, useTheme} from 'react-jss';
 import styled from 'styled-components';
+import {Time} from './design-system/Time';
 
 const useStyles = createUseStyles({
   progress: {
     position: 'relative',
     width: 200,
-    height: 200
+    height: 200,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   progressIcon: {
     position: 'absolute',
@@ -17,7 +21,17 @@ const useStyles = createUseStyles({
   playIcon: {
     width: '50%'
   },
-  step: {}
+  step: {
+    listStyle: 'none',
+    counterIncrement: 'steps-counter 1',
+    padding: 0,
+    '&::before': {
+      content: 'counter(steps-counter)',
+      minWidth: '1rem',
+      color: (p) => p.theme.colors.primary,
+      fontWeight: (p) => p.theme.fontWeights.bold
+    }
+  }
 });
 
 const recipe = {
@@ -61,17 +75,17 @@ const StartButton = styled('button')`
 `;
 
 export const Player = () => {
-  const classes = useStyles();
+  const theme = useTheme();
+  const classes = useStyles({theme});
   const [currStep, setCurrStep] = React.useState(0);
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [startTime, setStartTime] = React.useState(0);
   const [currTime, setCurrTime] = React.useState(0);
-  const [, updateProgress] = React.useState();
+
   const {time} = recipe.steps[currStep];
+  const elapsed = isPlaying ? time - Math.trunc((currTime - startTime) / 1000) : 0;
 
-  const progress = isPlaying ? Math.trunc((currTime - startTime) / 1000) : 0;
-
-  if (isPlaying && progress < time) {
+  if (elapsed > 0) {
     setTimeout(() => {
       setCurrTime(Date.now());
     }, 1000);
@@ -94,13 +108,18 @@ export const Player = () => {
     setCurrStep(index);
   };
 
+  const startButton = (
+    <StartButton type="button">
+      <PlayIcon className={classes.playIcon} />
+    </StartButton>
+  );
+  const timeDisplay = <Time value={elapsed} />;
+
   return (
     <div className={classes.root}>
       <div className={classes.progress} onClick={start}>
-        <StartButton type="button">
-          <PlayIcon className={classes.playIcon} />
-        </StartButton>
-        <CircularProgress value={progress} min={0} max={time} className={classes.progressIcon} />
+        {isPlaying ? timeDisplay : startButton}
+        <CircularProgress value={elapsed} min={0} max={time} className={classes.progressIcon} />
       </div>
       <ul>
         {recipe.steps.map((step, index) => (
