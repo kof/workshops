@@ -83,9 +83,9 @@ export const Player = () => {
   const [currTime, setCurrTime] = React.useState(0);
 
   const {time} = recipe.steps[currStep];
-  const elapsed = isPlaying ? time - Math.trunc((currTime - startTime) / 1000) : 0;
+  const elapsed = isPlaying ? time - Math.trunc((currTime - startTime) / 1000) : 100;
 
-  if (elapsed > 0) {
+  if (isPlaying && elapsed > 0) {
     setTimeout(() => {
       setCurrTime(Date.now());
     }, 1000);
