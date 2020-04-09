@@ -1,0 +1,12 @@
+{
+  "steps": [
+    {
+      "time": 30,
+      "description": "do that"
+    },
+    {
+      "time": 5,
+      "description": "do this"
+    }
+  ]
+}

@@ -63,7 +63,7 @@ const Path = ({className}) => (
   />
 );
 
-export const CircularProgress = ({value, min, max, className}) => {
+export const CircularProgressIcon = ({value, min, max, className}) => {
   const theme = useTheme();
   const classes = useStyles({theme, value, min, max});
 
