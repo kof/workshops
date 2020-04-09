@@ -42,12 +42,12 @@ const useStyles = createUseStyles({
   circularProgress: {
     overflow: 'hidden'
   },
-  progress: ({theme, ...rest}) => ({
+  progressIcon: ({theme, ...rest}) => ({
     stroke: theme.colors.primary,
     transition: 'stroke-dashoffset 0.5s ease 0s',
     ...getDashStyle(getPathRatio(rest))
   }),
-  trail: {
+  trailIcon: {
     stroke: ({theme}) => theme.colors.border,
     strokeLinecap: 'round',
     ...getDashStyle()
@@ -72,8 +72,8 @@ export const CircularProgressIcon = ({value, min, max, className}) => {
       viewBox={`0 0 ${VIEWBOX_SIZE} ${VIEWBOX_SIZE}`}
       className={`${classes.circularProgress} ${className}`}
     >
-      <Path className={classes.trail} />
-      <Path className={classes.progress} />
+      <Path className={classes.trailIcon} />
+      <Path className={classes.progressIcon} />
     </svg>
   );
 };
