@@ -10,10 +10,10 @@ const formatTime = (value) => {
 };
 
 const useStyles = createUseStyles({
-  root: {}
+  time: {}
 });
 
 export const Time = ({value}) => {
   const classes = useStyles();
-  return <p className={classes.root}>{formatTime(value)}</p>;
+  return <p className={classes.time}>{formatTime(value)}</p>;
 };

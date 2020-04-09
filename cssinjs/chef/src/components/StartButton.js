@@ -3,7 +3,7 @@ import {createUseStyles, useTheme} from 'react-jss';
 import {PlayIcon} from './PlayIcon';
 
 const useStyles = createUseStyles({
-  root: {
+  button: {
     postion: 'absolue',
     top: 0,
     left: 0,
@@ -35,7 +35,7 @@ export const StartButton = (props) => {
   const theme = useTheme();
   const classes = useStyles({theme});
   return (
-    <button type="button" className={classes.root} {...props}>
+    <button type="button" className={classes.button} {...props}>
       <PlayIcon className={classes.icon} />
     </button>
   );

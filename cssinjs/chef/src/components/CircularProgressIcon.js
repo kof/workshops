@@ -39,7 +39,7 @@ const getPathRatio = ({value, min, max}) => {
 };
 
 const useStyles = createUseStyles({
-  root: {
+  circularProgress: {
     overflow: 'hidden'
   },
   progress: ({theme, ...rest}) => ({
@@ -70,7 +70,7 @@ export const CircularProgressIcon = ({value, min, max, className}) => {
   return (
     <svg
       viewBox={`0 0 ${VIEWBOX_SIZE} ${VIEWBOX_SIZE}`}
-      className={`${classes.root} ${className}`}
+      className={`${classes.circularProgress} ${className}`}
     >
       <Path className={classes.trail} />
       <Path className={classes.progress} />

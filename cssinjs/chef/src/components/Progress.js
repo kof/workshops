@@ -6,7 +6,7 @@ import {StartButton} from './StartButton';
 import {useTick} from '../utils/useTick';
 
 const useStyles = createUseStyles({
-  root: {
+  progress: {
     position: 'relative',
     width: 200,
     height: 200,
@@ -59,7 +59,7 @@ export const Progress = ({step}) => {
   });
 
   return (
-    <div className={classes.root}>
+    <div className={classes.progress}>
       <CircularProgressIcon
         value={elapsed}
         min={0}
