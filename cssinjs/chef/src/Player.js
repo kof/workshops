@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {createUseStyles, useTheme} from 'react-jss';
 import {CircularProgress} from './design-system/CircularProgress';
-import styled from 'styled-components';
 import {Time} from './design-system/Time';
 import {StartButton} from './design-system/StartButton';
+import {useTick} from './utils/useTick';
 
 const useStyles = createUseStyles({
   progress: {
@@ -50,28 +50,25 @@ export const Player = () => {
   const classes = useStyles({theme});
   const [currStep, setCurrStep] = React.useState(0);
   const [isPlaying, setIsPlaying] = React.useState(false);
-  const [startTime, setStartTime] = React.useState(0);
-  const [currTime, setCurrTime] = React.useState(0);
+  const [{startTime, currTime}, setTime] = React.useState({startTime: 0, currTime: 0});
 
   const {time} = recipe.steps[currStep];
   const elapsed = isPlaying ? time - Math.trunc((currTime - startTime) / 1000) : 100;
 
-  if (isPlaying && elapsed > 0) {
-    setTimeout(() => {
-      setCurrTime(Date.now());
-    }, 1000);
-  }
+  useTick(() => {
+    if (isPlaying && elapsed > 0) {
+      setTime({startTime, currTime: Date.now()});
+    }
+  }, 1000);
 
   const start = () => {
     setIsPlaying(true);
-    setCurrTime(Date.now());
-    setStartTime(Date.now());
+    setTime({startTime: Date.now(), currTime: Date.now()});
   };
 
   const stop = () => {
     setIsPlaying(false);
-    setCurrTime(0);
-    setStartTime(0);
+    setTime({startTime: 0, currTime: 0});
   };
 
   const selectStep = (index) => {
