@@ -42,10 +42,10 @@ const useStyles = createUseStyles({
   circularProgress: {
     overflow: 'hidden'
   },
-  progressIcon: ({theme, ...rest}) => ({
+  progressIcon: ({theme, value, min, max}) => ({
     stroke: theme.colors.primary,
     transition: 'stroke-dashoffset 0.5s ease 0s',
-    ...getDashStyle(getPathRatio(rest))
+    ...getDashStyle(getPathRatio({value, min, max}))
   }),
   trailIcon: {
     stroke: ({theme}) => theme.colors.border,
