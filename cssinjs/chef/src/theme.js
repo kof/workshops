@@ -85,20 +85,7 @@ const boxShadows = {
   focus: `0 0 0 3px ${colors.focus}`
 };
 
-const textBaseStyles = {
-  color: 'base',
-  fontFamily: 'base',
-  fontWeight: 'base',
-  lineHeight: 'base',
-  letterSpacing: 'base'
-};
-
 export const theme = {
-  // Base font size (applied to body)
-  baseFontSize: '1em', // 1em = 16px
-  blockMarginBottom: space.m,
-  headingMarginTop: space.l,
-  listMargin: '1.3em',
   page: {
     // Max page with
     maxWidth: '32rem',
@@ -121,20 +108,5 @@ export const theme = {
   letterSpacings,
   colors,
   boxShadows,
-  breakpoints,
-  headingStyles: {},
-  textStyles: {
-    base: {
-      ...textBaseStyles
-    },
-    timer: {
-      ...textBaseStyles,
-      fontSize: fontSizes.xl
-    },
-    light: {
-      ...textBaseStyles,
-      fontSize: fontSizes.s,
-      color: colors.light
-    }
-  }
+  breakpoints
 };
