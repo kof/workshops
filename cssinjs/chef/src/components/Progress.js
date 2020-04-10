@@ -23,15 +23,19 @@ const useStyles = createUseStyles({
     zIndex: -1
   },
   time: {
-    marginTop: 10,
-    marginBottom: 15
+    marginTop: 6,
+    marginBottom: 18
   }
 });
 
-export const Progress = ({step}) => {
+export const Progress = ({step, autostart, onComplete, onStop}) => {
   const theme = useTheme();
   const classes = useStyles({theme});
-  const {isPlaying, remainingTime, start, stop} = useTimer(step);
+  const {isPlaying, remainingTime, start, stop} = useTimer({
+    step,
+    autostart,
+    onComplete
+  });
 
   return (
     <div className={classes.progress}>
@@ -43,7 +47,12 @@ export const Progress = ({step}) => {
       />
       {isPlaying ? (
         <>
-          <StopButton onStop={stop} />
+          <StopButton
+            onStop={() => {
+              stop();
+              onStop();
+            }}
+          />
           <Time value={remainingTime} className={classes.time} />
         </>
       ) : (
