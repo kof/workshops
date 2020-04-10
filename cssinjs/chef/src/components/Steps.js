@@ -25,7 +25,7 @@ const useStyles = createUseStyles({
       color: ({theme}) => theme.colors.primary,
       fontWeight: ({theme}) => theme.fontWeights.bold
     },
-    '&:hover, &[data-active="true"]': {
+    '&:hover, &[data-state="active"]': {
       color: ({theme}) => theme.colors.primary
     }
   }
@@ -40,7 +40,7 @@ export const Steps = ({steps, selected, onSelect}) => {
         <li className={classes.stepContainer} key={index}>
           <button
             type="button"
-            data-active={step === selected}
+            data-state={step === selected ? 'active' : 'inactive'}
             onClick={() => onSelect(step)}
             className={classes.stepButton}
           >
