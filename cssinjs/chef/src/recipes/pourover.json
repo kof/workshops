@@ -5,19 +5,19 @@
       "description": "Pour 50 ml of water and wait 30 seconds"
     },
     {
-      "time": 5,
+      "time": 15,
       "description": "Pour 50 ml of water and stir the coffee with a spoon"
     },
     {
-      "time": 5,
+      "time": 10,
       "description": "Pour 100 ml more"
     },
     {
-      "time": 5,
+      "time": 10,
       "description": "Pour 100 ml more"
     },
     {
-      "time": 5,
+      "time": 10,
       "description": "Pour the rest of the water"
     },
     {
@@ -25,7 +25,7 @@
       "description": "Shake the jug"
     },
     {
-      "time": 5,
+      "time": 0,
       "description": "Enjoy your coffee! ☕️"
     }
   ]
