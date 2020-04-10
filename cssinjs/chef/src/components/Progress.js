@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {createUseStyles, useTheme} from 'react-jss';
+import {createUseStyles} from 'react-jss';
 import {CircularProgressIcon} from './CircularProgressIcon';
 import {Time} from './Time';
 import {StartButton} from './StartButton';
@@ -29,8 +29,7 @@ const useStyles = createUseStyles({
 });
 
 export const Progress = ({step, autostart, onComplete, onStop}) => {
-  const theme = useTheme();
-  const classes = useStyles({theme});
+  const classes = useStyles();
   const {isPlaying, remainingTime, start, stop} = useTimer({
     step,
     autostart,
