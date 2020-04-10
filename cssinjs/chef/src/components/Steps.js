@@ -2,34 +2,53 @@ import * as React from 'react';
 import {createUseStyles, useTheme} from 'react-jss';
 
 const useStyles = createUseStyles({
-  step: {
+  steps: {
+    padding: 0
+  },
+  stepContainer: {
     listStyle: 'none',
-    counterIncrement: 'steps-counter 1',
+    counterIncrement: 'steps-counter',
     padding: 0,
+    margin: ({theme}) => theme.space.m
+  },
+  stepButton: {
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    transition: 'font-size 0.2s ease',
+    color: ({theme}) => theme.colors.base,
+    fontSize: ({theme}) => theme.fontSizes.l,
+    textDecoration: 'none',
     '&::before': {
       content: 'counter(steps-counter)',
-      minWidth: '1rem',
-      color: (p) => p.theme.colors.primary,
-      fontWeight: (p) => p.theme.fontWeights.bold
+      display: 'inline-block',
+      minWidth: ({theme}) => theme.fontSizes.l,
+      color: ({theme}) => theme.colors.primary,
+      fontWeight: ({theme}) => theme.fontWeights.bold
+    },
+    '&:hover, &[data-active="true"]': {
+      color: ({theme}) => theme.colors.primary
     }
   }
 });
 
-export const Steps = ({steps, onSelect}) => {
+export const Steps = ({steps, selected, onSelect}) => {
   const theme = useTheme();
   const classes = useStyles({theme});
-
   return (
-    <ul>
+    <ol className={classes.steps}>
       {steps.map((step, index) => (
-        <li
-          className={classes.step}
-          onClick={() => onSelect(step)}
-          key={step.description}
-        >
-          {step.description}
+        <li className={classes.stepContainer} key={index}>
+          <button
+            type="button"
+            data-active={step === selected}
+            onClick={() => onSelect(step)}
+            className={classes.stepButton}
+          >
+            {step.description}
+          </button>
         </li>
       ))}
-    </ul>
+    </ol>
   );
 };

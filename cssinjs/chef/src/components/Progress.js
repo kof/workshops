@@ -3,21 +3,24 @@ import {createUseStyles, useTheme} from 'react-jss';
 import {CircularProgressIcon} from './CircularProgressIcon';
 import {Time} from './Time';
 import {StartButton} from './StartButton';
+import {StopButton} from './StopButton';
 import {useTimer} from '../hooks/useTimer';
 
 const useStyles = createUseStyles({
   progress: {
     position: 'relative',
-    width: 200,
-    height: 200,
+    width: 150,
+    height: 150,
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'flex-end'
   },
   icon: {
     position: 'absolute',
     top: 0,
-    left: 0
+    left: 0,
+    zIndex: -1
   }
 });
 
@@ -35,7 +38,10 @@ export const Progress = ({step}) => {
         className={classes.icon}
       />
       {isPlaying ? (
-        <Time value={remainingTime} />
+        <>
+          <StopButton onStop={stop} className={classes.stop} />
+          <Time value={remainingTime} />
+        </>
       ) : (
         <StartButton onClick={start} />
       )}

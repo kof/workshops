@@ -4,7 +4,23 @@ import {Progress} from '../components/Progress';
 import {Steps} from '../components/Steps';
 
 const useStyles = createUseStyles({
-  player: {}
+  '@global': {
+    html: {
+      fontSize: '1em',
+      textSizeAdjust: '100%'
+    }
+  },
+  player: ({theme}) => ({
+    fontFamily: theme.fonts.base,
+    lineHeight: theme.lineHeights.base,
+    fontWeight: theme.fontWeights.base,
+    color: theme.colors.base,
+    margin: '0 auto',
+    padding: theme.space.m,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  })
 });
 
 export const RecipePlayer = ({recipe}) => {
@@ -15,7 +31,7 @@ export const RecipePlayer = ({recipe}) => {
   return (
     <div className={classes.player}>
       <Progress step={currStep} />
-      <Steps steps={recipe.steps} onSelect={setCurrStep} />
+      <Steps steps={recipe.steps} selected={currStep} onSelect={setCurrStep} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {createUseStyles} from 'react-jss';
+import {createUseStyles, useTheme} from 'react-jss';
 
 const toTime = (value) => value.toString().padStart(2, '0');
 
@@ -10,10 +10,13 @@ const formatTime = (value) => {
 };
 
 const useStyles = createUseStyles({
-  time: {}
+  time: {
+    fontSize: ({theme}) => theme.fontSizes.l
+  }
 });
 
 export const Time = ({value}) => {
-  const classes = useStyles();
+  const theme = useTheme();
+  const classes = useStyles({theme});
   return <p className={classes.time}>{formatTime(value)}</p>;
 };
