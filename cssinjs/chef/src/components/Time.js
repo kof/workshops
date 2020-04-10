@@ -15,8 +15,8 @@ const useStyles = createUseStyles({
   }
 });
 
-export const Time = ({value}) => {
+export const Time = ({className, value}) => {
   const theme = useTheme();
   const classes = useStyles({theme});
-  return <p className={classes.time}>{formatTime(value)}</p>;
+  return <p className={`${classes.time} ${className}`}>{formatTime(value)}</p>;
 };

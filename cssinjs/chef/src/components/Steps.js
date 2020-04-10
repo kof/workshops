@@ -15,7 +15,6 @@ const useStyles = createUseStyles({
     background: 'none',
     border: 'none',
     cursor: 'pointer',
-    transition: 'font-size 0.2s ease',
     color: ({theme}) => theme.colors.base,
     fontSize: ({theme}) => theme.fontSizes.l,
     textDecoration: 'none',

@@ -21,6 +21,10 @@ const useStyles = createUseStyles({
     top: 0,
     left: 0,
     zIndex: -1
+  },
+  time: {
+    marginTop: 10,
+    marginBottom: 15
   }
 });
 
@@ -39,8 +43,8 @@ export const Progress = ({step}) => {
       />
       {isPlaying ? (
         <>
-          <StopButton onStop={stop} className={classes.stop} />
-          <Time value={remainingTime} />
+          <StopButton onStop={stop} />
+          <Time value={remainingTime} className={classes.time} />
         </>
       ) : (
         <StartButton onClick={start} />
