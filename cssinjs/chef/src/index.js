@@ -1,12 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import * as React from 'react';
+import ReactDOM from 'react-dom';
+import {ThemeProvider} from 'react-jss';
+import {RecipePlayer} from './screens/RecipePlayer';
+import {theme} from './theme';
+import pourover from './recipes/pourover.json';
 
-import App from "./App";
-
-const rootElement = document.getElementById("root");
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <RecipePlayer recipe={pourover} />
+    </ThemeProvider>
   </React.StrictMode>,
-  rootElement
+  document.getElementById('root')
 );

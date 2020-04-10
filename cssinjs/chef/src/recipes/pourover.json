@@ -1,0 +1,32 @@
+{
+  "steps": [
+    {
+      "time": 30,
+      "description": "Pour 50 ml of water and wait"
+    },
+    {
+      "time": 15,
+      "description": "Pour 50 ml of water and stir the coffee with a spoon"
+    },
+    {
+      "time": 10,
+      "description": "Pour 100 ml more"
+    },
+    {
+      "time": 10,
+      "description": "Pour 100 ml more"
+    },
+    {
+      "time": 10,
+      "description": "Pour the rest of the water"
+    },
+    {
+      "time": 5,
+      "description": "Shake the jug"
+    },
+    {
+      "time": 0,
+      "description": "Enjoy your coffee! ☕️"
+    }
+  ]
+}
