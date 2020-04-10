@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import {ThemeProvider} from 'react-jss';
 import {RecipePlayer} from './screens/RecipePlayer';
 import {theme} from './theme';
-import recipe from './recipe.json';
+import pourover from './recipes/pourover.json';
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <RecipePlayer recipe={recipe} />
+      <RecipePlayer recipe={pourover} />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
