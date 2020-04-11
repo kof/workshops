@@ -13,8 +13,7 @@ const useStyles = createUseStyles({
     transition:
       'opacity 0.7s cubic-bezier(0.61, 1, 0.88, 1), background-color 0.2s ease-in-out',
     '&:hover, &:active': {
-      backgroundColor: ({theme}) => theme.colors.hover,
-      cursor: 'pointer'
+      backgroundColor: ({theme}) => theme.colors.hover
     }
   }
 });

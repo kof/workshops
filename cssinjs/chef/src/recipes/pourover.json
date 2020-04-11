@@ -1,4 +1,5 @@
 {
+  "icon": "☕️",
   "steps": [
     {
       "time": 30,
@@ -26,7 +27,7 @@
     },
     {
       "time": 0,
-      "description": "Enjoy your coffee! ☕️"
+      "description": "Enjoy your coffee!"
     }
   ]
 }

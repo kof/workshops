@@ -4,6 +4,7 @@ import {CircularProgressIcon} from './CircularProgressIcon';
 import {Time} from './Time';
 import {StartButton} from './StartButton';
 import {StopButton} from './StopButton';
+import {CompleteIcon} from './CompleteIcon';
 import {useTimer} from '../hooks/useTimer';
 
 const useStyles = createUseStyles({
@@ -28,14 +29,13 @@ const useStyles = createUseStyles({
   }
 });
 
-export const Progress = ({step, autostart, onComplete, onStop}) => {
+export const Progress = ({step, icon, autostart, onComplete, onStop}) => {
   const classes = useStyles();
   const {isPlaying, remainingTime, start, stop} = useTimer({
     step,
     autostart,
     onComplete
   });
-
   return (
     <div className={classes.progress}>
       <CircularProgressIcon
@@ -44,7 +44,7 @@ export const Progress = ({step, autostart, onComplete, onStop}) => {
         max={step.time}
         className={classes.icon}
       />
-      {isPlaying ? (
+      {isPlaying && (
         <>
           <StopButton
             onStop={() => {
@@ -54,9 +54,9 @@ export const Progress = ({step, autostart, onComplete, onStop}) => {
           />
           <Time value={remainingTime} className={classes.time} />
         </>
-      ) : (
-        <StartButton onClick={start} />
       )}
+      {!isPlaying && step.time !== 0 && <StartButton onClick={start} />}
+      {!isPlaying && step.time === 0 && <CompleteIcon icon={icon} />}
     </div>
   );
 };

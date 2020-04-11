@@ -45,6 +45,7 @@ export const RecipePlayer = ({recipe}) => {
       <Progress
         step={currStep}
         autostart={autostart}
+        icon={recipe.icon}
         onComplete={onComplete}
         onStop={() => setAutostart(false)}
       />

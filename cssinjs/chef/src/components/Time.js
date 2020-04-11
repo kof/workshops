@@ -11,7 +11,8 @@ const formatTime = (value) => {
 
 const useStyles = createUseStyles({
   time: {
-    fontSize: ({theme}) => theme.fontSizes.l
+    fontSize: ({theme}) => theme.fontSizes.l,
+    fontFeatureSettings: 'tnum'
   }
 });
 
