@@ -1,13 +1,8 @@
 import * as React from 'react';
-import {createUseStyles, useTheme} from 'react-jss';
 import {Progress} from '../components/Progress';
 import {Steps} from '../components/Steps';
 
-const useStyles = createUseStyles();
-
 export const RecipePlayer = ({recipe}) => {
-  const theme = useTheme();
-  const classes = useStyles({theme});
   const [currStep, setCurrStep] = React.useState(recipe.steps[0]);
   const [autostart, setAutostart] = React.useState(false);
 
@@ -23,7 +18,7 @@ export const RecipePlayer = ({recipe}) => {
   };
 
   return (
-    <div className={classes.player}>
+    <div>
       <Progress
         step={currStep}
         autostart={autostart}
