@@ -17,9 +17,7 @@ const useStyles = createUseStyles({
     color: theme.colors.base,
     margin: '0 auto',
     padding: theme.space.m,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
+    display: 'flex'
   })
 });
 
