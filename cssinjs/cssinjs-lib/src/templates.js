@@ -1,13 +1,13 @@
 let counter = 0;
 
-const css = styles => {
-  let cssStr = "";
+const css = (styles) => {
+  const rules = [];
   for (const ruleName in styles) {
-    cssStr += `.${ruleName}-${++counter} {
+    rules.push(`.${ruleName}-${++counter} {
       ${styles[ruleName]}
-    }`;
+    }`);
   }
-  return cssStr;
+  return rules.join('\n');
 };
 
 const cssString = css({
@@ -20,4 +20,4 @@ const cssString = css({
     box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
   `
 });
-//console.log(cssString);
+// console.log(cssString);

@@ -1,11 +1,11 @@
 let counter = 0;
 
-const css = styles => {
-  let cssStr = "";
+const css = (styles) => {
+  const rules = [];
   for (const ruleName in styles) {
     const decl = styles[ruleName];
     let declStr = ``;
-    if (typeof decl === "string") {
+    if (typeof decl === 'string') {
       declStr = decl;
     } else {
       for (const prop in decl) {
@@ -13,17 +13,19 @@ const css = styles => {
         declStr += `  ${prop}: ${value};\n`;
       }
     }
-    cssStr += `\n.${ruleName}-${++counter} {
-${declStr}}`;
+    rules.push(`
+      .${ruleName}-${++counter} {
+        ${declStr}
+      }`);
   }
-  return cssStr;
+  return rules.join('\n');
 };
 
 const cssString = css({
   cssInJsBtn1: {
-    color: "white",
-    background: "green",
-    padding: "10px 13px"
+    color: 'white',
+    background: 'green',
+    padding: '10px 13px'
   },
   cssInJsBtn2: `
     color: green;
@@ -32,4 +34,4 @@ const cssString = css({
   `
 });
 
-//console.log(cssString);
+// console.log(cssString);
