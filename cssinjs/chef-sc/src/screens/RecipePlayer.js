@@ -16,7 +16,7 @@ const Player = styled.div`
   font-weight: ${({theme}) => theme.fontWeights.base};
   color: ${({theme}) => theme.colors.base};
   margin: 0 auto;
-  padding: theme.space.m;
+  padding: ${({theme}) => theme.space.m};
   display: flex;
   flex-direction: column;
   align-items: center;

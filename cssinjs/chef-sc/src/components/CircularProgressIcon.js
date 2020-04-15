@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {createUseStyles, useTheme} from 'react-jss';
+import styled from 'styled-components';
 
 const VIEWBOX_SIZE = 100;
 const STROKE_WIDTH = 6;
@@ -38,24 +38,9 @@ const getPathRatio = ({value, min, max}) => {
   return (boundedValue - min) / (max - min);
 };
 
-const useStyles = createUseStyles({
-  circularProgress: {
-    overflow: 'hidden'
-  },
-  progressIcon: ({theme, value, min, max}) => ({
-    stroke: theme.colors.primary,
-    transition: 'stroke-dashoffset 0.5s ease 0s',
-    ...getDashStyle(getPathRatio({value, min, max}))
-  }),
-  trailIcon: {
-    stroke: ({theme}) => theme.colors.border,
-    strokeLinecap: 'round',
-    ...getDashStyle()
-  }
-});
-
-const Path = ({className}) => (
+const Path = ({className, style}) => (
   <path
+    style={style}
     className={className}
     d={PATH}
     strokeWidth={STROKE_WIDTH}
@@ -63,17 +48,24 @@ const Path = ({className}) => (
   />
 );
 
-export const CircularProgressIcon = ({value, min, max, className}) => {
-  const theme = useTheme();
-  const classes = useStyles({theme, value, min, max});
+const Svg = styled.svg`
+  overflow: 'hidden';
+`;
 
-  return (
-    <svg
-      viewBox={`0 0 ${VIEWBOX_SIZE} ${VIEWBOX_SIZE}`}
-      className={`${classes.circularProgress} ${className}`}
-    >
-      <Path className={classes.trailIcon} />
-      <Path className={classes.progressIcon} />
-    </svg>
-  );
-};
+const Progress = styled(Path)`
+  stroke: ${({theme}) => theme.colors.primary};
+  transition: stroke-dashoffset 0.5s ease 0s;
+`;
+
+const Trail = styled(Path)({
+  stroke: ({theme}) => theme.colors.border,
+  strokeLinecap: 'round',
+  ...getDashStyle()
+});
+
+export const CircularProgressIcon = ({value, min, max, className}) => (
+  <Svg viewBox={`0 0 ${VIEWBOX_SIZE} ${VIEWBOX_SIZE}`} className={className}>
+    <Trail />
+    <Progress style={getDashStyle(getPathRatio({value, min, max}))} />
+  </Svg>
+);
