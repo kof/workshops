@@ -1,4 +1,4 @@
-import './css-with-templates';
-import './css-with-objects';
+import './templates';
+import './objects';
 import './mixed-mode';
-import './css-rendering';
+import './rendering';
