@@ -15,9 +15,10 @@ const useStyles = createUseStyles({
     lineHeight: theme.lineHeights.base,
     fontWeight: theme.fontWeights.base,
     color: theme.colors.base,
-    margin: '0 auto',
     padding: theme.space.m,
-    display: 'flex'
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   })
 });
 
