@@ -21,12 +21,12 @@ const CircularProgressIcon = styled(CircularProgressIconBase)`
   position: absolute;
   top: 0;
   left: 0;
-  zindex: -1;
+  z-index: -1;
 `;
 
 const Time = styled(TimeBase)`
   margin-top: 6px;
-  marginbottom: 18px;
+  margin-bottom: 18px;
 `;
 
 export const Progress = ({step, icon, autostart, onComplete, onStop}) => {

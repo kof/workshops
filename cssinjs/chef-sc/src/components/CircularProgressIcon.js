@@ -49,7 +49,7 @@ const Path = ({className, style}) => (
 );
 
 const Svg = styled.svg`
-  overflow: 'hidden';
+  overflow: hidden;
 `;
 
 const Progress = styled(Path)`
